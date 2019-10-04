@@ -21,7 +21,7 @@
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:sqlserver://localhost:1433;DatabaseName=cripto;instance=SQLEXPRESS" />
 			<property name="javax.persistence.jdbc.user" value="mateus" />
-			<property name="javax.persistence.jdbc.password" value="piboK24@" />
+			<property name="javax.persistence.jdbc.password" value="mateus" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
