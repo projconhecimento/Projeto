@@ -31,8 +31,11 @@
 					<label>Insira a senha para validar:</label>
 					<input type="text"  class="form-control form-control-lg"id="senhaTeste">
 				</div>
-				<div class="col-lg-6" style="padding-top:1.9%;">
+				<div class="col-lg-4" style="padding-top:1.9%;">
 					<button type="button" id="validar" class="btn btn-primary">Validar</button>
+				</div>
+				<div class="col-lg-2 " style="border: 1px solid blue; border-radius: 12px;">
+					<a style="padding-left:35%; cursor:pointer;" id="esqueciSenha">Esqueci Senha</a>
 				</div>
 				<div class="col-lg-1 " style="border: 1px solid blue; border-radius: 12px;">
 					<a style="padding-left:35%; cursor:pointer;" id="loginModal">Login</a>

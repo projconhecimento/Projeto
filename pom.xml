@@ -29,6 +29,13 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>6.1.5.jre7-preview</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>8.0.17</version>
+	</dependency>
+	
 	<dependency>
 			<groupId>com.sun.jersey</groupId>
 			<artifactId>jersey-server</artifactId>
@@ -44,11 +51,11 @@
 		<artifactId>jersey-client</artifactId>
 		<version>1.8</version>
 	</dependency>
-<!-- 	<dependency> -->
-<!--   		  <groupId>org.apache.httpcomponents</groupId> -->
-<!--    		 <artifactId>httpcore</artifactId> -->
-<!--    		 <version>4.4.11</version> -->
-<!-- 	</dependency> -->
+	<dependency>
+  		  <groupId>org.apache.httpcomponents</groupId>
+   		 <artifactId>httpcore</artifactId>
+   		 <version>4.4.11</version>
+	</dependency>
 	<dependency>
    		 <groupId>org.apache.httpcomponents</groupId>
    		 <artifactId>httpclient</artifactId>
