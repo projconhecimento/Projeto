@@ -1,7 +1,13 @@
 package criptoLogin.com.login.rest;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.GregorianCalendar;
@@ -16,6 +22,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+
+import org.eclipse.jdt.internal.compiler.parser.Scanner;
 
 import criptoLogin.com.login.crypto.CryptoUtil;
 import criptoLogin.com.login.entity.*;
@@ -265,5 +273,39 @@ public class LoginRest
 		ranking.setNota(nota);
 		PersistenceManager.Persist(ranking);
 		return ranking;
+	}
+	
+	@POST
+	@Path("apisenha")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String apiEsqueciMinhaSenha(@FormParam(value= "emailEsquecidoUsuario") String email, @FormParam(value="nomeEsquecidoUsuario") String usuario) throws IOException
+	{
+		 URL url = new URL("http://localhost:8080/email/rest/email/envia");
+         HttpURLConnection con = (HttpURLConnection) url.openConnection();
+         con.setRequestMethod("POST");
+         con.setRequestProperty("content-type", "application/json");
+         con.setDoOutput(true);
+         String jsonInputString = "{'email': "+email+", 'usuario': "+usuario+"}";	
+         try(OutputStream os = con.getOutputStream()) {
+        	    byte[] input = jsonInputString.getBytes("utf-8");
+        	    os.write(input, 0, input.length);           
+        	}
+//         con.connect();
+//         @SuppressWarnings("resource")
+//		String jsonDeResposta = new java.util.Scanner(con.getInputStream()).next();
+//         try(BufferedReader br = new BufferedReader(
+//        		  new InputStreamReader(con.getInputStream(), "utf-8"))) {
+//        		    StringBuilder response = new StringBuilder();
+//        		    String responseLine = null;
+//        		    while ((responseLine = br.readLine()) != null) {
+//        		        response.append(responseLine.trim());
+//        		    }
+//        		    System.out.println(response.toString());
+//        		}
+         if (con.getResponseCode() != 200) {
+             throw new RuntimeException("HTTP error code : "+ con.getResponseCode());
+         }
+         con.disconnect();
+		return null;
 	}
 }

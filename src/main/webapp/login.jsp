@@ -112,7 +112,32 @@
      		 </div>
      	 </div>
      	</div>
-	</form>
+     	</form>
+     	<div class="modal fade" id="modalEsqueciSenha" role="dialog">
+  		  <div class="modal-dialog">
+    	  <!-- Modal content-->
+    	  	<form id="esqueciSenhaEmail">
+    		 <div class="modal-content">
+      			  <div class="modal-header">
+       			   <button type="button" class="close" data-dismiss="modal">&times;</button>
+         			<h4 class="modal-title">Esqueceu sua senha? Recupere abaixo!</h4>
+      			  </div>
+     		   <div class="modal-body" style="overflow: auto;">
+					<div class="col-sm-7" style="padding-left:0%;">
+						<label>Informe seu e-mail de recuperação:<input type="text" class="form-control form-control-sm" name="emailEsquecidoUsuario" required id="emailEsquecidoUsuario"></label><br/>
+					</div>
+					<div class="col-sm-5">
+						<label>Informe seu usuário:<input type="text" class="form-control form-control-sm" name="nomeEsquecidoUsuario" id="nomeEsquecidoUsuario" required ></label>
+					</div>
+     	   	   </div>
+     	   	   <div class="modal-footer">
+       	  		 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       	  		 <button type="submit" class="btn btn-success">Esqueci Minha Senha</button>
+        	   </div>
+     		 </div>
+     		 </form>
+     	 </div>
+     	</div>
 </body>
 <script>
 $('#logar').on('click', function(e){
@@ -154,6 +179,23 @@ $('#logar').on('click', function(e){
 // $("input:checkbox[name=input]:checked").each(function(){
 //     yourArray.push($(this).val());
 // });
+
+$('#esqueciSenhaEmail').on('submit',function(e){
+	debugger;
+	var datastring = $("#esqueciSenhaEmail").serialize();
+	$.ajax({
+	    type: "POST",
+	    data: datastring,
+	    url: "rest/login/apisenha",
+	    dataType: "json",
+	    success: function(data) {
+	    }
+	});
+});
+
+$('#esqueciSenha').on('click',function(e){
+	$('#modalEsqueciSenha').modal('show');
+});
 $('[name="input"]').on('click', function(e){
 	var id = e.currentTarget.id;
 	if(e.currentTarget.checked)
